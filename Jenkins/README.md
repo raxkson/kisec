@@ -26,6 +26,19 @@ Install Jenkins with Helm
 helm install jenkins -f jenkins-value.yaml stable/jenkins
 ```
 
+For Jenkins UnkownHostException...(This make me crazy)
+First, you have to login jenkins docker with root
+```bash
+docker exec -u 0 -it <Container ID> bash
+``
+Second, you should be add nameserver 8.8.8.8 /etc/resolv.conf, but we do not have editor and put with redirection
+Then you can finally use plugin...!
+```bash
+echo 'nameserver 8.8.8.8' >> /etc/resolv.conf
+```
+
+
+
 ### When master node give error with liveness & readiness (In worker node)
 ```bash
 sudo systemctl restart kubelet.service
