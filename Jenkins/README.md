@@ -12,7 +12,7 @@ mkdir jenkins-volume
 sudo chown -R 1000:1000 jenkins-volume
 ```
 
-Get value from stable/jenkins (You must edit some values!!!)
+Get value from stable/jenkins (You must edit some values!!! I put the comment in jenkins-value.yaml #edit by raxkson)
 - admin password
 - nodeport
 - liveness time
@@ -30,7 +30,7 @@ helm install jenkins -f jenkins-value.yaml stable/jenkins
 ```bash
 sudo systemctl restart kubelet.service
 ```
-Also something worng
+Also something wrong
 ```bash
 sudo docker stop $(sudo docker ps -a -q); sudo docker rm $(sudo docker ps -a -q)
 ```
