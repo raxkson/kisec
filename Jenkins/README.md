@@ -32,6 +32,7 @@ sudo systemctl restart kubelet.service
 ```
 Also something wrong
 ```bash
+kubectl rollout restart deployment jenkins 
 sudo docker stop $(sudo docker ps -a -q); sudo docker rm $(sudo docker ps -a -q)
 ```
 
