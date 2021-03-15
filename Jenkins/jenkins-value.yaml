@@ -101,7 +101,7 @@ master:
   # If you disable the non-Jenkins identity store and instead use the Jenkins internal one,
   # you should revert master.adminUser to your preferred admin user:
   adminUser: "admin"
-  # adminPassword: <defaults to random>
+  adminPassword: "kisec1234" #edit by raxkson
   admin:
     existingSecret: ""
     userKey: jenkins-admin-user
@@ -146,8 +146,8 @@ master:
   targetPort: 8080
   # For minikube, set this to NodePort, elsewhere use LoadBalancer
   # Use ClusterIP if your setup includes ingress controller
-  serviceType: NodePort
-  nodePort: 32000
+  serviceType: NodePort #edit by raxkson
+  nodePort: 32000       #edit by raxkson
   # Jenkins master service annotations
   serviceAnnotations: {}
   # Jenkins master custom labels
@@ -163,15 +163,16 @@ master:
   # nodePort: <to set explicitly, choose port between 30000-32767
   # Enable Kubernetes Liveness and Readiness Probes
   # ~ 2 minutes to allow Jenkins to restart when upgrading plugins. Set ReadinessTimeout to be shorter than LivenessTimeout.
+  #edit by raxkson (need to give more time to connect)
   healthProbes: true
-  healthProbesLivenessTimeout: 5
+  healthProbesLivenessTimeout: 10
   healthProbesReadinessTimeout: 5
   healthProbeLivenessPeriodSeconds: 10
-  healthProbeReadinessPeriodSeconds: 10
+  healthProbeReadinessPeriodSeconds: 30
   healthProbeLivenessFailureThreshold: 5
-  healthProbeReadinessFailureThreshold: 3
-  healthProbeLivenessInitialDelay: 90
-  healthProbeReadinessInitialDelay: 60
+  healthProbeReadinessFailureThreshold: 100
+  healthProbeLivenessInitialDelay: 300
+  healthProbeReadinessInitialDelay: 300
   slaveListenerPort: 50000
   slaveHostPort:
   disabledAgentProtocols:
@@ -226,12 +227,13 @@ master:
 
   # List of plugins to be install during Jenkins master start
   installPlugins:
-    - kubernetes:1.25.7
-    - workflow-job:2.39
-    - workflow-aggregator:2.6
-    - credentials-binding:1.23
-    - git:4.2.2
-    - configuration-as-code:1.41
+          #edit by raxkson(I thought plugin create errors.... but i'm not sure about it)
+          #- kubernetes:1.25.7
+          #- workflow-job:2.39
+          #- workflow-aggregator:2.6
+          #- credentials-binding:1.23
+          #- git:4.2.2
+          #- configuration-as-code:1.41
 
   # List of plugins to install in addition to those listed in master.installPlugins
   additionalPlugins: []
@@ -608,7 +610,7 @@ persistence:
   storageClass:
   annotations: {}
   accessMode: "ReadWriteOnce"
-  size: "5Gi"
+  size: "5Gi" #edit by raxkson
   volumes:
   #  - name: nothing
   #    emptyDir: {}
