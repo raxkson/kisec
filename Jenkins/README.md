@@ -30,7 +30,7 @@ For Jenkins UnkownHostException...(This make me crazy)
 First, you have to login jenkins docker with root
 ```bash
 docker exec -u 0 -it <Container ID> bash
-``
+```
 Second, you should be add nameserver 8.8.8.8 /etc/resolv.conf, but we do not have editor and put with redirection
 Then you can finally use plugin...!
 ```bash
