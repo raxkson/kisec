@@ -12,7 +12,7 @@ mkdir jenkins-volume
 sudo chown -R 1000:1000 jenkins-volume
 ```
 
-Get value from stable/jenkins (You must edit some values!!! I put the comment in jenkins-value.yaml #edit by raxkson)
+Get value from stable/jenkins (You must edit some values!!! I put the comment in jenkins-value.yaml `#edit by raxkson`)
 - admin password
 - nodeport
 - liveness time
