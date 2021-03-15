@@ -38,9 +38,9 @@ sudo apt-get remove docker docker-engine docker.io
 Install Docker CE
 ```bash
 sudo apt-get update && sudo apt-get install -y \
-  containerd.io=1.2.13-2 \
-  docker-ce=5:19.03.11~3-0~ubuntu-$(lsb_release -cs) \
-  docker-ce-cli=5:19.03.11~3-0~ubuntu-$(lsb_release -cs)
+  containerd.io \
+  docker-ce \
+  docker-ce-cli
 ```
 
 Create /etc/docker
