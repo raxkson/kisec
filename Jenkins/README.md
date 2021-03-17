@@ -44,10 +44,13 @@ echo 'nameserver 8.8.8.8' >> /etc/resolv.conf
 ```bash
 sudo systemctl restart kubelet.service
 ```
-Also something wrong
+Also something wrong in master or worker
+```bash
+sudo docker stop $(sudo docker ps -a -q); sudo docker rm $(sudo docker ps -a -q)
+```
+Only for master
 ```bash
 kubectl rollout restart deployment jenkins 
-sudo docker stop $(sudo docker ps -a -q); sudo docker rm $(sudo docker ps -a -q)
 ```
 
 There are so many errors... Good luck.. If you need help contact to raxkson@gmail.com
