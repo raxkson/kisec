@@ -53,4 +53,18 @@ Only for master
 kubectl rollout restart deployment jenkins 
 ```
 
+when you want to use git with jenkins give this command to workernode (you must use this on user not root!)
+```bash
+git config --global --unset http.proxy
+```
+
+
+Last thing is... when you restart jenkins-docker you should do this thing again
+```bash
+docker exec -u 0 -it <Container ID> bash
+echo 'nameserver 8.8.8.8' >> /etc/resolv.conf
+docker exec -it <Container ID> bash
+git config --global --unset http.proxy
+```
+
 There are so many errors... Good luck.. If you need help contact to raxkson@gmail.com

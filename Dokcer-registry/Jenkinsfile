@@ -1,0 +1,43 @@
+def label = "test-${UUID.randomUUID().toString()}"
+
+def console(msg) {
+    echo msg
+}
+
+console("============= START ================")
+
+podTemplate(
+	label: label, 
+  containers: [
+		containerTemplate(name: 'docker', image: 'docker:stable', ttyEnabled: true, command: 'cat')
+  ],
+  volumes: [
+    hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock'),
+    hostPathVolume(hostPath: '/etc/docker/certs.d', mountPath: '/etc/docker/certs.d')
+  ]
+) 
+{
+	node(label) {
+
+		def dockerRegistry = "https://mydocker.com:30500"
+		def org = "mydocker.com:30500"
+
+		def credential = "credential_localreg"
+		try {
+			stage("Build/Push Image") {
+				console("== START: build/push image==")			
+				container('docker') {
+					docker.withRegistry("${dockerRegistry}", "${credential}") {
+						sh "docker pull hello-world"
+						sh "docker tag hello-world ${org}/hello-world"
+						sh "docker push ${org}/hello-world"
+					}
+				}
+				console("== END: build/push image==")
+			}
+		} catch(e) {
+			currentBuild.result = "FAILED"
+			console("*** FAILED ***")
+		}
+	}
+}
