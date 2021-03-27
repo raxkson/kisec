@@ -67,4 +67,10 @@ docker exec -it <Container ID> bash
 git config --global --unset http.proxy
 ```
 
+When you want to use kubernetes plugin you have to apply jankins-sa.yaml
+```bash
+kubectl apply -f jenkins-sa.yaml
+```
+
+
 There are so many errors... Good luck.. If you need help contact to raxkson@gmail.com
