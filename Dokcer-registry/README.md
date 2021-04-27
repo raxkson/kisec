@@ -5,7 +5,7 @@
  
 First, install docker-registry with helm
 ```bash
-helm install docker-registry -n registry --set=service.nodePort=30500,service.type=NodePort
+helm install docker-registry stable/docker-registry -n registry --set service.nodePort=30500,service.type=NodePort
 ```
 
 Second, add the address where you want to login /etc/hosts

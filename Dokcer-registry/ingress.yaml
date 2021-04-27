@@ -10,9 +10,9 @@ metadata:
     nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
 spec:
   rules:
-  - host: mydocker.com
+  - host: docker-registry.com
     http:
       paths:
       - backend:
           serviceName: registry-docker-registry
-          servicePort: 5000
+          servicePort: 30500
