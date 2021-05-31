@@ -2,14 +2,14 @@
 ### First, install jdk on master node
 ```bash
 sudo apt-get update
-sudo apt-get install openjdk-8-jdk
+sudo apt-get install openjdk-8-jdk -y
 java -version
 ```
 
 ### Second, install jenkins on master node
 1. Add jenkins apt
 ```bash
-sudo apt-get install default-jdk apt-transport-https wget gnupg
+sudo apt-get install default-jdk apt-transport-https wget gnupg -y
 wget -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -
 sudo su -
 echo "deb https://pkg.jenkins.io/debian-stable binary/" > /etc/apt/sources.list.d/jenkins.list
@@ -19,7 +19,7 @@ exit
 2. install jenkins
 ```bash
 sudo apt-get update
-sudo apt-get install jenkins
+sudo apt-get install jenkins -y
 sudo systemctl enable jenkins
 cat /var/lib/jenkins/secrets/initialAdminPassword
 ```
